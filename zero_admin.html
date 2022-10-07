@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+        integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
+        crossorigin="anonymous"></script>
+    <script src="dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand bg-transparent col-md-3 col-lg-2 me-0 px-3 fs-10" href="#">Zero team</a>
+        <button class="navbar-toggler position-absolute collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-flex">
+            <form class="d-flex me-2" style="height: 50px; padding: 5px;" role="search">
+                <input class="form-control" type="search" placeholder="Search for..." aria-label="Search">
+                <button class="btn bg-primary" type="submit">
+                    <i class="fas fa-search text-white"></i>
+                </button>
+            </form>
+            <div class="dropdown my-auto pe-3 dropstart">
+                <button class="btn btn-secondary dropdown-toggle bg-transparent border-none" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-user"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="#">profile</a></li>
+                    <li><a class="dropdown-item" href="#">settings</a></li>
+                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="column">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2  bg-dark sidebar collapse">
+                <div class="position-sticky pt-3 sidebar-sticky">
+                    <p
+                        class="sidebar-heading d-flex justify-content-between align-items-center px-2 mt-4 mb-1 text-muted text-uppercase fs-6 fw-semibold ">
+                        <span>Core</span>
+                    </p>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">
+                                <i class="fas fa-tachometer-alt"></i>
+                                Quản lí sản phẩm
+                            </a>
+                        </li>
+                        <li class="nav-item text">
+                            <a class="nav-link" href="ManageUser.html">
+                                <i class="fas fa-tachometer-alt"></i>
+                                Quản lí người dùng
+                            </a>
+                        </li>
+                    </ul>
+
+                    <p
+                        class="sidebar-heading d-flex justify-content-between align-items-center px-2 mt-4 mb-1 text-muted text-uppercase fs-6 fw-semibold ">
+                        <span>Interface</span>
+                    </p>
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-columns"></i>
+                                Layouts
+                                <i class="fas fa-chevron-right float-end me-5"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-book-open"></i>
+                                Pages
+                                <i class="fas fa-chevron-right float-end me-5"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <p
+                        class="sidebar-heading d-flex justify-content-between align-items-center px-2 mt-4 mb-1 text-muted text-uppercase fs-6 fw-semibold ">
+                        <span>Addons</span>
+                    </p>
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-chart-area"></i>
+                                charts
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-table"></i>
+                                tables
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="main__body my-4 ms-4">
+        <h2>Quản lí sản phẩm</h2>
+        <button type="submit" class="btn btn-primary fw-semibold mb-3">
+            <i class="fas fa-plus"></i>
+            Create
+        </button>
+        <table class="table ">
+            <thead>
+                <tr class="table-light fw-normal text-center">
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Img</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="text-center">
+                    <th class="fw-normal" scope="row">SP1</th>
+                    <td>Áo dài thêu hoạ tiết</td>
+                    <td><img style="width: 7rem;" src="img/img1.png" alt=""></td>
+                    <td>122000</td>
+                    <td>
+                        <button type="submit" class="btn btn-outline-danger">
+                            <i class="fas fa-cogs"></i>
+                        </button>
+                        <button type="submit" class="btn btn-outline-warning">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="text-center">
+                    <th class="fw-normal" scope="row">SP2</th>
+                    <td>Áo dài truyền thống</td>
+                    <td><img style="width: 7rem;" src="img/img2.png" alt=""></td>
+                    <td>400000</td>
+                    <td>
+                        <button type="submit" class="btn btn-outline-danger">
+                            <i class="fas fa-cogs"></i>
+                        </button>
+                        <button type="submit" class="btn btn-outline-warning">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="text-center">
+                    <th class="fw-normal" scope="row">SP3</th>
+                    <td>Áo dài</td>
+                    <td><img style="width: 7rem;" src="img/img3.png" alt=""></td>
+                    <td>350000</td>
+                    <td>
+                        <button type="submit" class="btn btn-outline-danger">
+                            <i class="fas fa-cogs"></i>
+                        </button>
+                        <button type="submit" class="btn btn-outline-warning">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="text-center">
+                    <th class="fw-normal" scope="row">SP4</th>
+                    <td>Áo dài hiện dại</td>
+                    <td><img style="width: 7rem;" src="img/img4.png" alt=""></td>
+                    <td>564000</td>
+                    <td>
+                        <button type="submit" class="btn btn-outline-danger">
+                            <i class="fas fa-cogs"></i>
+                        </button>
+                        <button type="submit" class="btn btn-outline-warning">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="text-center">
+                    <th class="fw-normal" scope="row">SP1</th>
+                    <td>Áo dài thêu hoạ tiết</td>
+                    <td><img style="width: 7rem;" src="img/img1.png" alt=""></td>
+                    <td>122000</td>
+                    <td>
+                        <button type="submit" class="btn btn-outline-danger">
+                            <i class="fas fa-cogs"></i>
+                        </button>
+                        <button type="submit" class="btn btn-outline-warning">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="text-center">
+                    <th class="fw-normal" scope="row">SP2</th>
+                    <td>Áo dài truyền thống</td>
+                    <td><img style="width: 7rem;" src="img/img2.png" alt=""></td>
+                    <td>400000</td>
+                    <td>
+                        <button type="submit" class="btn btn-outline-danger">
+                            <i class="fas fa-cogs"></i>
+                        </button>
+                        <button type="submit" class="btn btn-outline-warning">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="text-center">
+                    <th class="fw-normal" scope="row">SP3</th>
+                    <td>Áo dài</td>
+                    <td><img style="width: 7rem;" src="img/img3.png" alt=""></td>
+                    <td>350000</td>
+                    <td>
+                        <button type="submit" class="btn btn-outline-danger">
+                            <i class="fas fa-cogs"></i>
+                        </button>
+                        <button type="submit" class="btn btn-outline-warning">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="text-center">
+                    <th class="fw-normal" scope="row">SP4</th>
+                    <td>Áo dài hiện dại</td>
+                    <td><img style="width: 7rem;" src="img/img4.png" alt=""></td>
+                    <td>564000</td>
+                    <td>
+                        <button type="submit" class="btn btn-outline-danger">
+                            <i class="fas fa-cogs"></i>
+                        </button>
+                        <button type="submit" class="btn btn-outline-warning">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
