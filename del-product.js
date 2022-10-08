@@ -81,7 +81,7 @@ $(function () {
 
         $.ajax({
             type: 'POST',
-            url: 'http://nguyendung2.atwebpages.com/add-product.php',
+            url: 'http://nguyendung2.atwebpages.com/zero_web1/add-product.php',
             dataType: 'json',
             data: productData,
             success: function (data) {
@@ -113,7 +113,7 @@ $(function () {
     
             $.ajax({
                 type: 'POST',
-                url: 'http://nguyendung2.atwebpages.com/delete-product.php',
+                url: 'http://nguyendung2.atwebpages.com/zero_web1/delete-product.php',
                 dataType: 'json',
                 data: delProductData,
                 success: function (data) {
