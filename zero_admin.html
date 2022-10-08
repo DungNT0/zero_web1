@@ -1,0 +1,252 @@
+<!-- Task
+create database table of employees
+title
+first name
+last name
+position
+salary
+add 5 example employees
+display these data in a datatable 
+create a dropdown list with the employee names -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">"
+
+    <!-- datatables -->
+    <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+    <script src="del-product.js"></script>
+
+    <style>
+        #emna_div {
+            margin-left: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-sm-11">
+                <h1> Products </h1>
+                <table id="product-table">
+                    <thead>
+                        <th> ID </th>
+                        <th> Name </th>
+                        <th> Price </th>
+                        <th> Image </th>
+                        <th></th>
+                    </thead>
+
+                </table>
+            </div>
+
+            <!-- <div class="col-sm-1" style="margin-top:140px;">
+                <table id="del-col">
+                    <tr>
+                        <th></th>
+                    </tr>
+
+                    <tr>
+                        <td id="employee-delete"></td>
+                    </tr>
+                </table>
+            </div> -->
+
+        </div>
+
+        <!-- <div class="row">
+            <div class="col-md-12" style="margin-top:80px;">
+                <h1>Salary</h1>
+                <select id="emna"></select>
+                <input type="text" id="salary_save">
+                <button class="btn btn-warning" id="salary-save">Save</button>
+            </div>
+        </div> -->
+
+        <div class="row">
+            <div class="col-md-12" style="margin-top:20px;">
+                <h1>Add products</h1>
+                <input value="Name" type="text" id="name">
+                <input value="Price" type="text" id="price">
+                <input value="Image" type="file" id="image">
+                <button class="btn btn-warning" id="product-save">Save</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- <script>
+
+        $(function () {
+            var table = $('#employees-table').DataTable({
+                ajax: 'employees.php',
+                initComplete: function (settings, json) {
+                    console.log("initComplete: " + json.data.length);
+
+                    $.each(json.data, function (key, value) {
+                        $("#emna").append('<option value="' + value.id + '">' +
+                            value.first_name + " " + value.last_name + '</option>')
+
+                    });
+                    $(function () {
+                        function deleteButtons() {
+                            $('.btn-danger').click(function () {
+                                delEmployeeData = {
+                                    employee_id: $(this).val()
+
+                                };
+
+                                console.dir(delEmployeeData);
+
+                                $.ajax({
+                                    type: 'POST',
+                                    url: 'http://nguyendung.atwebpages.com/delete-employees.php',
+                                    dataType: 'json',
+                                    data: delEmployeeData,
+                                    success: function (data) {
+                                        console.log('Success');
+                                        console.log(data.status);
+                                        console.log(data);
+
+                                        //refresh the data in the table
+                                        table.ajax.reload();
+                                    },
+                                    error: function (data, status, xhr) {
+                                        console.log('Error');
+                                        console.log(data.status);
+                                        console.log(data);
+                                        console.log(status);
+                                        console.log(xhr);
+                                    }
+                                });
+
+                                console.log("Employee ID:" + $(this).val());
+                            });
+                        }
+
+                    });
+
+
+                },
+
+                columns: [
+                    { 'data': 'id' },
+                    { 'data': 'title' },
+                    { 'data': 'first_name' },
+                    { 'data': 'last_name' },
+                    { 'data': 'position' },
+                    { 'data': 'salary' },
+                    { 'data': 'delete' }
+                ]
+            });
+
+            //change salary
+            $('#salary-save').click(function () {
+
+                var employeeId = $('#emna').val();
+                var employeeSalarySave = $('#salary_save').val();
+
+                console.log("Id: " + employeeId);
+                console.log("Salary: " + employeeSalarySave);
+
+                salaryData = {
+                    employee_id: employeeId,
+                    employee_salary_save: employeeSalarySave
+                };
+
+                console.dir(salaryData);
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://nguyendung.atwebpages.com/set-employees.php',
+                    dataType: 'json',
+                    data: salaryData,
+                    success: function (data) {
+                        console.log('Success');
+                        console.log(data.status);
+                        console.log(data);
+
+                        //refresh the data in the table
+                        table.ajax.reload();
+                    },
+                    error: function (data, status, xhr) {
+                        console.log('Error');
+                        console.log(data.status);
+                        console.log(data);
+                        console.log(status);
+                        console.log(xhr);
+                    }
+                });
+
+            });
+
+            //add employee
+            $('#employee-save').click(function () {
+
+                var employeeTitle = $('#title').val();
+                var employeeFirstName = $('#first_name').val();
+                var employeeLastName = $('#last_name').val();
+                var employeePosition = $('#position').val();
+                var employeeSalary = $('#salary').val();
+
+                console.log("Title: " + employeeTitle);
+                console.log("First name: " + employeeFirstName);
+                console.log("Last name: " + employeeLastName);
+                console.log("Position: " + employeePosition);
+                console.log("Salary: " + employeeSalary);
+
+                employeeData = {
+                    employee_title: employeeTitle,
+                    employee_first_name: employeeFirstName,
+                    employee_last_name: employeeLastName,
+                    employee_position: employeePosition,
+                    employee_salary: employeeSalary
+                };
+
+                console.dir(employeeData);
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://nguyendung.atwebpages.com/add-employees.php',
+                    dataType: 'json',
+                    data: employeeData,
+                    success: function (data) {
+                        console.log('Success');
+                        console.log(data.status);
+                        console.log(data);
+
+                        //refresh the data in the table
+                        table.ajax.reload();
+                    },
+                    error: function (data, status, xhr) {
+                        console.log('Error');
+                        console.log(data.status);
+                        console.log(data);
+                        console.log(status);
+                        console.log(xhr);
+                    }
+                });
+
+            });
+
+
+        })
+
+    </script> -->
+
+</body>
+
+</html>
