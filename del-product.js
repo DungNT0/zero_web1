@@ -63,18 +63,15 @@ $(function () {
     //add employee
     $('#product-save').click(function () {
 
-        var productId = $('#emna').val();
         var productName = $('#name').val();
         var productPrice = $('#price').val();
         var productImage = $('#image').val();
 
-        console.log("Id: " + productId);
         console.log("Name: " + productName);
         console.log("Price: " + productPrice);
         console.log("Image: " + productImage);
 
         productData = {
-            product_id: productId,
             product_name: productName,
             product_price: productPrice,
             product_image: productImage
