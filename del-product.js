@@ -81,7 +81,7 @@ $(function () {
         console.dir(productData);
 
         $.ajax({
-            type: 'POST, FILES',
+            type: 'POST',
             url: 'http://nguyendung2.atwebpages.com/zero_web1/add-product.php',
             dataType: 'json',
             data: productData,
@@ -107,7 +107,7 @@ $(function () {
         $('.btn-danger').click(function () {
 
             var productId = $('#id').val();
-            
+
             console.log("Id: " + productId);
 
             delProductData = {
