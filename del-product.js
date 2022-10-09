@@ -106,12 +106,7 @@ $(function () {
     function deleteButtons() {
         $('.btn-danger').click(function () {
 
-            var productId = $('#id').val();
-
-            console.log("Id: " + productId);
-
             delProductData = {
-                product_id: productId,
                 product_id: $(this).val()
     
             };
