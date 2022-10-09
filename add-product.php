@@ -22,7 +22,7 @@ if (isset($_POST['product_price'])) {
 }
 
 if (isset($_FILES['product_image'])) {
-    $product_image = $_FILES['product_image'];
+    $product_image = 'uploaded_img/'.$product_image;;
 
 } else {
     $product_image = null;
@@ -31,7 +31,7 @@ if (isset($_FILES['product_image'])) {
 //shorthand
 $product_name = (string)$_POST['product_name'] ?? null;
 $product_price = (string)$_POST['product_price'] ?? null;
-$product_image = (string)$_POST['product_image'] ?? null;
+$product_image = (string)$_FILES['product_image'] ?? null;
 
 if (!is_null($product_name) && !is_null($product_price) && !is_null($product_image)) {
     error_log("Variables set");
