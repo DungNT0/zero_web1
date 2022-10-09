@@ -4,11 +4,11 @@ $(function () {
         initComplete: function (settings, json) {
             console.log("initComplete: " + json.data.length);
 
-            $.each(json.data, function (key, value) {
-                $("#emna").append('<option value="' + value.id + '">' +
-                    value.name + '</option>')
+            // $.each(json.data, function (key, value) {
+            //     $("#emna").append('<option value="' + value.id + '">' +
+            //         value.name + '</option>')
 
-            });
+            // });
             deleteButtons();
         },
 
@@ -16,7 +16,8 @@ $(function () {
             { 'data': 'id' },
             { 'data': 'name' },
             { 'data': 'price' },
-            { 'data': 'image' }
+            { 'data': 'image' },
+            { 'data': 'delete' }
         ]
     });
 
@@ -105,8 +106,12 @@ $(function () {
     });
     function deleteButtons() {
         $('.btn-danger').click(function () {
+            // var productId = $('#emna').val();
+
+            // console.log("Id: " + productId);
 
             delProductData = {
+                // product_id: productId,
                 product_id: $(this).val()
     
             };
