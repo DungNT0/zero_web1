@@ -6,7 +6,7 @@ $(function () {
 
             $.each(json.data, function (key, value) {
                 $("#emna").append('<option value="' + value.id + '">' +
-                    value.name + " " + value.price + '</option>')
+                    value.name + '</option>')
 
             });
             deleteButtons();
@@ -19,6 +19,7 @@ $(function () {
             { 'data': 'image' }
         ]
     });
+
 
     //change salary
     // $('#salary-save').click(function () {
@@ -80,7 +81,7 @@ $(function () {
         console.dir(productData);
 
         $.ajax({
-            type: 'POST',
+            type: 'POST, FILES',
             url: 'http://nguyendung2.atwebpages.com/zero_web1/add-product.php',
             dataType: 'json',
             data: productData,
@@ -104,7 +105,13 @@ $(function () {
     });
     function deleteButtons() {
         $('.btn-danger').click(function () {
+
+            var productId = $('#id').val();
+            
+            console.log("Id: " + productId);
+
             delProductData = {
+                product_id: productId,
                 product_id: $(this).val()
     
             };
